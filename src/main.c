@@ -36,7 +36,7 @@ void gpio_cb(const struct device *port, struct gpio_callback *cb, uint32_t pin){
 int main(void)
 {
 
-	irq_enable();
+	// irq_enable();
 	int ret;
 	// btn.port
 	if(!device_is_ready(btn.port)){
@@ -62,7 +62,7 @@ int main(void)
 		return ret;
 	}
 
-	ret = gpio_pin_interrupt_configure_dt(&inp, GPIO_INT_EDGE_RISING);
+	ret = gpio_pin_interrupt_configure_dt(&inp, GPIO_INT_LEVEL_ACTIVE);
 	if(ret != 0){
 		return ret;
 	}
@@ -87,7 +87,7 @@ int main(void)
 		return 0;
 	}
 
-	uint8_t config[2] = {0x03,0x8C};
+	// uint8_t config[2] = {0x03,0x8C};
 	while (1)
 	{
 		
