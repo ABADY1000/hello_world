@@ -13,6 +13,27 @@
 	};
 };
 
+/{
+	buttuns{
+		compatible = "gpio-leds";
+		but: but{
+			gpios = <&gpio0 14 GPIO_ACTIVE_HIGH>;
+		};
+
+		int_inp: int_inp{
+			gpios = <&gpio0 10 GPIO_ACTIVE_HIGH>;
+		};
+	};
+};
+// &gpio0 {
+// 	chirp_pins: chirp_pins0{
+
+// 		gpio-hog;
+// 		gpios = < label cell >;
+// 	};	
+// };
+
+
 // You can also use the buttons in the sidebar to perform actions on nodes.
 // Actions currently available include:
 
