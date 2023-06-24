@@ -62,7 +62,7 @@ int main(void)
 		return ret;
 	}
 
-	ret = gpio_pin_interrupt_configure_dt(&inp, GPIO_INT_LEVEL_ACTIVE);
+	ret = gpio_pin_interrupt_configure_dt(&inp, GPIO_INT_EDGE_RISING);
 	if(ret != 0){
 		return ret;
 	}
@@ -88,6 +88,7 @@ int main(void)
 	}
 
 	// uint8_t config[2] = {0x03,0x8C};
+	int counter = 0;
 	while (1)
 	{
 		
@@ -112,7 +113,17 @@ int main(void)
 		k_msleep(100);
 		gpio_pin_set(btn.port, btn.pin, 1);
 		k_msleep(900);
-		printk("ONE_LOOP_COMPLETED\n\r");
+		printk("ONE_LOOP_COMPLETED: %d\n\r", counter);
+
+		if(counter == 10){
+			// Disable interrupt
+			gpio_pin_interrupt_configure_dt(&inp, GPIO_INT_DISABLE);
+		}
+		else if(counter == 16){
+			// Enable interrupt
+			gpio_pin_interrupt_configure_dt(&inp, GPIO_INT_EDGE_FALLING);
+		}
+		counter++;
 	}
 	return 0;
 }
