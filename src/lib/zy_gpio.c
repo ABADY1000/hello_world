@@ -9,10 +9,10 @@ static struct gpio_dt_spec ch_prg;
 static struct gpio_dt_spec ch_rst;
 static struct gpio_dt_spec ch_int;
 
-ch_io_int_callback_t int_cb;
+ch_io_int_callback_t int_cb_ptr;
 void zy_int_cb(const struct device *port, struct gpio_callback *cb, uint32_t pin){
-    if(int_cb != NULL){
-        int_cb(NULL, 0);
+    if(int_cb_ptr != NULL){
+        int_cb_ptr(NULL, 0);
     }
 }
 
@@ -104,5 +104,5 @@ int zy_gpio_int_disable_int(){
 }
 
 int zy_gpio_set_int_cb(ch_io_int_callback_t int_cb){
-
+    int_cb_ptr = int_cb;
 }

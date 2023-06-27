@@ -1,15 +1,15 @@
 // To get started, press Ctrl+Space to bring up the completion menu and view the available nodes.
 &i2c0 {
-    chrip_conf: chrip_conf@77 {
+    chrip_conf: chrip_conf@45 {
 		compatible = "i2c-device";
 		label = "CHRIP_CONF";
-		reg = <0x77>;
+		reg = <0x45>;
 	};
 
-    chrip: chrip@44 {
+    chrip: chrip@23 {
 		compatible = "i2c-device";
 		label = "CHRIP";
-		reg = <0x44>;
+		reg = <0x23>;
 	};
 };
 
